@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.Backend", "AsyncVsSync.Backend\AsyncVsSync.Backend.csproj", "{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.App", "AsyncVsSync.App\AsyncVsSync.App.csproj", "{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
