@@ -26,22 +26,28 @@ public static class Program
                 Name = "Batch HTTP Client", Description = "Sends a batch of requests to the backend at once."
             };
 
-            var numberOfRequestsOption = app.Option("-n|--number-of-requests",
+            var numberOfRequestsOption = app.Option("-n|--number-of-requests <number>",
                                                     "The number of requests that should be performed against the backend. The default value is 1000 requests.",
                                                     CommandOptionType.SingleOrNoValue);
 
-            var waitIntervalOption = app.Option("-w|--wait-interval",
+            var waitIntervalOption = app.Option("-w|--wait-interval <milliseconds>",
                                                 "The time span in milliseconds that the backend will wait during a single request. The default value is 1000ms.",
                                                 CommandOptionType.SingleOrNoValue);
 
-            var targetOption = app.Option("-t|--target",
+            var targetOption = app.Option("-t|--target <api>",
                                           "The target API. Can be either \"sync\" or \"async\". The default value is \"sync\".",
                                           CommandOptionType.SingleOrNoValue);
 
-            var logLevelOption = app.Option("-l|--log-level",
+            var logLevelOption = app.Option("-l|--log-level <log-level>",
                                             "The log level. Default is \"Warning\". Set to \"Debug\" or \"Information\" to see more messages from the HTTP client",
                                             CommandOptionType.SingleOrNoValue);
 
+            var urlOption = app.Option("-u|--url <URL>",
+                                       "The URL to target. The default is \"http://localhost:5203\".",
+                                       CommandOptionType.SingleOrNoValue);
+
+            app.HelpOption();
+            
             app.OnExecuteAsync(async cancellationToken =>
             {
                 await using var serviceProvider = DependencyInjection.CreateServiceProvider();
@@ -53,6 +59,7 @@ public static class Program
                 var numberOfRequests = 1000;
                 if (int.TryParse(numberOfRequestsOption.Value(), out var parsedNumberOfRequests) && parsedNumberOfRequests > 0)
                     numberOfRequests = parsedNumberOfRequests;
+                
                 var waitInterval = 1000;
                 if (int.TryParse(waitIntervalOption.Value(), out var parsedWaitInterval) && parsedWaitInterval > 0)
                     waitInterval = parsedWaitInterval;
@@ -61,10 +68,13 @@ public static class Program
                 if ("async".Equals(targetOption.Value(), StringComparison.OrdinalIgnoreCase))
                     endpointRelativeUrl = "/async";
 
+                var baseAddress = new Uri("http://localhost:5203", UriKind.Absolute);
+                if (Uri.TryCreate(urlOption.Value(), UriKind.Absolute, out var parsedUri))
+                    baseAddress = parsedUri;
+
                 // Perform the calls against the service
                 var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
                 using var httpClient = httpClientFactory.CreateClient();
-                var baseAddress = new Uri("http://localhost:5203", UriKind.Absolute);
                 var url = new Uri(baseAddress, $"{endpointRelativeUrl}?waitIntervalInMilliseconds={waitInterval}");
                 
                 Console.WriteLine($"Performing {numberOfRequests} requests against {endpointRelativeUrl}...");
