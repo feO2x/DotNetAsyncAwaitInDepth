@@ -14,6 +14,7 @@ public static class SyncVsAsyncEndpoints
 {
     public static WebApplication MapSyncVsAsyncEndpoints(this WebApplication app)
     {
+        app.MapHealthChecks("/");
         app.MapGet("/sync", WaitSync);
         app.MapGet("/async", DelayAsync);
         app.MapGet("/results", GetThreadPoolResults);

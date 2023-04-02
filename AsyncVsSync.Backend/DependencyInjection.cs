@@ -12,7 +12,8 @@ public static class DependencyInjection
         builder.Host.UseSerilog(logger);
         builder.Services
                .AddTransient(_ => ValidationContextFactory.CreateContext())
-               .AddSingleton(new ThreadPoolWatcher());
+               .AddSingleton(new ThreadPoolWatcher())
+               .AddHealthChecks();
         return builder;
     }
 }
