@@ -6,16 +6,22 @@ namespace AsyncVsSync.Backend;
 public sealed class ThreadPoolWatcher
 {
     public readonly int MaximumWorkerThreads;
-    private int _usedWorkerThreads;
+    private int _maximumUsedWorkerThreads;
 
     public ThreadPoolWatcher() => ThreadPool.GetMaxThreads(out MaximumWorkerThreads, out _);
 
-    public int UsedWorkerThreads => Volatile.Read(ref _usedWorkerThreads);
+    public int MaximumUsedWorkerThreads => Volatile.Read(ref _maximumUsedWorkerThreads);
 
     public void UpdateUsedThreads()
     {
+        var currentlyUsedWorkerThreads = GetNumberOfUsedWorkerThreads();
+        InterlockedMaximum(ref _maximumUsedWorkerThreads, currentlyUsedWorkerThreads);
+    }
+
+    private int GetNumberOfUsedWorkerThreads()
+    {
         ThreadPool.GetAvailableThreads(out var availableWorkerThreads, out _);
-        InterlockedMaximum(ref _usedWorkerThreads, MaximumWorkerThreads - availableWorkerThreads);
+        return MaximumWorkerThreads - availableWorkerThreads;
     }
 
     private static void InterlockedMaximum(ref int target, int value)
@@ -29,4 +35,6 @@ public sealed class ThreadPoolWatcher
                 Interlocked.CompareExchange(ref target, Math.Max(temporaryValue, value), temporaryValue);
         } while (temporaryValue != readValueOfTarget);
     }
+
+    public void Reset() => Volatile.Write(ref _maximumUsedWorkerThreads, 0);
 }

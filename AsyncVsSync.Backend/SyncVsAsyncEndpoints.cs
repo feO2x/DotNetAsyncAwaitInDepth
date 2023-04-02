@@ -1,11 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Light.Validation;
 using Light.Validation.Checks;
-using Light.Validation.Tools;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Range = Light.Validation.Tools.Range;
 
 namespace AsyncVsSync.Backend;
 
@@ -45,7 +46,16 @@ public static class SyncVsAsyncEndpoints
 
     private static IResult GetThreadPoolResults(ThreadPoolWatcher threadPoolWatcher)
     {
-        var results = new { threadPoolWatcher.UsedWorkerThreads, threadPoolWatcher.MaximumWorkerThreads };
+        var totalNumberOfThreads = ThreadPool.ThreadCount;
+        var osDescription = $"{RuntimeInformation.OSDescription} {RuntimeInformation.OSArchitecture}";
+        var results = new
+        {
+            threadPoolWatcher.MaximumUsedWorkerThreads,
+            threadPoolWatcher.MaximumWorkerThreads,
+            totalNumberOfThreads,
+            osDescription
+        };
+        threadPoolWatcher.Reset();
         return Results.Ok(results);
     }
 
