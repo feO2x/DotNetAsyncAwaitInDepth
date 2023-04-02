@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Serilog;
 
 namespace AsyncVsSync.Backend;
 
@@ -8,18 +9,19 @@ public static class Program
 {
     public static async Task<int> Main(string[] args)
     {
-        var logger = Logging.CreateLogger();
+        Log.Logger = Logging.CreateLogger();
+    
         try
         {
             var app = WebApplication.CreateBuilder(args)
-                                    .ConfigureServices(logger)
+                                    .ConfigureServices()
                                     .Build()
                                     .MapSyncVsAsyncEndpoints();
 
             // Do not run performance tests in Debug mode. Also, make sure that you enabled
             // best performance in your OS settings and that your laptop is plugged in.
 #if DEBUG
-            logger.Warning("Do not run performance tests in Debug mode - please switch to Release mode");
+            Log.Warning("Do not run performance tests in Debug mode - please switch to Release mode");
 #endif
 
             await app.RunAsync();
@@ -27,8 +29,13 @@ public static class Program
         }
         catch (Exception exception)
         {
-            logger.Fatal(exception, "Could not run AsyncVsSync backend");
+            Log.Fatal(exception, "Could not run AsyncVsSync backend");
             return 1;
         }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+
     }
 }

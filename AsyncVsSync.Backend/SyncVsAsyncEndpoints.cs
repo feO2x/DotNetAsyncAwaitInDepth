@@ -6,6 +6,7 @@ using Light.Validation;
 using Light.Validation.Checks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Serilog;
 using Range = Light.Validation.Tools.Range;
 
 namespace AsyncVsSync.Backend;
@@ -14,6 +15,7 @@ public static class SyncVsAsyncEndpoints
 {
     public static WebApplication MapSyncVsAsyncEndpoints(this WebApplication app)
     {
+        app.UseSerilogRequestLogging();
         app.MapHealthChecks("/");
         app.MapGet("/sync", WaitSync);
         app.MapGet("/async", DelayAsync);

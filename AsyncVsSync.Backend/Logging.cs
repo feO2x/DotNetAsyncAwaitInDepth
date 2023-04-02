@@ -6,7 +6,8 @@ namespace AsyncVsSync.Backend;
 public static class Logging
 {
     public static ILogger CreateLogger() =>
-        new LoggerConfiguration().MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+        new LoggerConfiguration().MinimumLevel.Information()
+                                 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
                                  .WriteTo.Console()
                                  .CreateLogger();
 }
