@@ -7,9 +7,9 @@ namespace AsyncVsSync.Backend;
 
 public static class DependencyInjection
 {
-    public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder, ILogger logger)
+    public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Host.UseSerilog(logger);
+        builder.Host.UseSerilog();
         builder.Services
                .AddTransient(_ => ValidationContextFactory.CreateContext())
                .AddSingleton(new ThreadPoolWatcher())
