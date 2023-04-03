@@ -1,0 +1,22 @@
+﻿services:
+  backend:
+    build: "./AsyncVsSync.Backend"
+    container_name: async-vs-sync-backend
+    ports:
+      - "5000:80"
+    networks:
+      - async-vs-sync-network
+    
+  client:
+    build: "./AsyncVsSync.App/"
+    container_name: async-vs-sync-app
+    networks:
+      - async-vs-sync-network
+    depends_on:
+      - backend
+    command: ["sleep", "infinity"]
+
+networks:
+  async-vs-sync-network:
+    name: async-vs-sync-network
+    driver: bridge

@@ -12,12 +12,12 @@ COPY . .
 RUN dotnet publish "./AsyncVsSync.Backend.csproj" \
     -c Release \
     --no-restore \
-    --runtime alpine-x64\
-    --self-contained true\
-    /p:PublishTrimmed=true\
-    /p:PublishSingleFile=true\
+    --runtime alpine-x64 \
+    --self-contained true \
+    /p:PublishSingleFile=true \
     -o "../app"
 
 FROM base
 WORKDIR /app
 COPY --from=build /app .
+ENTRYPOINT ["./AsyncVsSync.Backend"]
