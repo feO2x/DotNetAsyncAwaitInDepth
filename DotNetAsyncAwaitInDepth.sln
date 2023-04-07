@@ -3,16 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.Backend", "AsyncVsSync.Backend\AsyncVsSync.Backend.csproj", "{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.App", "AsyncVsSync.App\AsyncVsSync.App.csproj", "{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{791EE44B-0F2B-4FD0-B20A-1CF8502BF796}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
-		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Async vs. Sync", "01-Async vs. Sync", "{3017944B-F12C-4B91-BCD3-1ACF07B2E7B4}"
+	ProjectSection(SolutionItems) = preProject
+		01-AsyncVsSync\docker-compose.yml = 01-AsyncVsSync\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.App", "01-AsyncVsSync\AsyncVsSync.App\AsyncVsSync.App.csproj", "{47E47487-E177-4412-B747-FA32AA44BA01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.Backend", "01-AsyncVsSync\AsyncVsSync.Backend\AsyncVsSync.Backend.csproj", "{95562BAB-E862-4AAD-9395-A5FDCC554B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,13 +27,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{388080DA-4050-4FB5-BD97-F6F5DA8D42B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F63E685-C2D4-4C62-93DD-6AC5CBCF0D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E47487-E177-4412-B747-FA32AA44BA01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E47487-E177-4412-B747-FA32AA44BA01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E47487-E177-4412-B747-FA32AA44BA01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E47487-E177-4412-B747-FA32AA44BA01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47E47487-E177-4412-B747-FA32AA44BA01} = {3017944B-F12C-4B91-BCD3-1ACF07B2E7B4}
+		{95562BAB-E862-4AAD-9395-A5FDCC554B36} = {3017944B-F12C-4B91-BCD3-1ACF07B2E7B4}
 	EndGlobalSection
 EndGlobal
