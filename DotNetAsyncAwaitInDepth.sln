@@ -18,6 +18,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.App", "01-Async
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncVsSync.Backend", "01-AsyncVsSync\AsyncVsSync.Backend\AsyncVsSync.Backend.csproj", "{95562BAB-E862-4AAD-9395-A5FDCC554B36}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Async Decompiled", "02-Async Decompiled", "{FCC62978-F77A-4D59-B52A-679C61AE1396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncDecompiled.AvaloniaApp", "02-AsyncDecompiled\AsyncDecompiled.AvaloniaApp\AsyncDecompiled.AvaloniaApp.csproj", "{270354C0-7CF7-4291-B297-FC23B3652097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,9 +39,14 @@ Global
 		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95562BAB-E862-4AAD-9395-A5FDCC554B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270354C0-7CF7-4291-B297-FC23B3652097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270354C0-7CF7-4291-B297-FC23B3652097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{270354C0-7CF7-4291-B297-FC23B3652097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270354C0-7CF7-4291-B297-FC23B3652097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{47E47487-E177-4412-B747-FA32AA44BA01} = {3017944B-F12C-4B91-BCD3-1ACF07B2E7B4}
 		{95562BAB-E862-4AAD-9395-A5FDCC554B36} = {3017944B-F12C-4B91-BCD3-1ACF07B2E7B4}
+		{270354C0-7CF7-4291-B297-FC23B3652097} = {FCC62978-F77A-4D59-B52A-679C61AE1396}
 	EndGlobalSection
 EndGlobal

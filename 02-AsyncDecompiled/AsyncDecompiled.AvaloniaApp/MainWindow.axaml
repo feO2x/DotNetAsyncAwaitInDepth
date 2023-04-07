@@ -1,0 +1,66 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:avaloniaApp="clr-namespace:AsyncDecompiled.AvaloniaApp"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AsyncDecompiled.AvaloniaApp.MainWindow"
+        x:DataType="avaloniaApp:MainWindowViewModel"
+        Width="600"
+        Height="400"
+        Title=".NET async await decompiled"
+        ExtendClientAreaToDecorationsHint="True"
+        TransparencyLevelHint="AcrylicBlur">
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial BackgroundSource="Digger"
+                                             TintColor="Black"
+                                             TintOpacity="1"
+                                             MaterialOpacity="0.8" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+
+        <Grid RowDefinitions="30, *">
+
+            <TextBlock Grid.Row="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Margin="12 0">async await decompiled</TextBlock>
+
+            <Grid Grid.Row="1"
+                  Width="340"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  RowDefinitions="Auto, 12, Auto, 8, Auto, 12, Auto, 12, 30">
+
+                <TextBlock Grid.Row="0"
+                           Classes="Headline6">
+                    Calculate lowest common multiple
+                </TextBlock>
+
+                <TextBox Grid.Row="2" Text="{CompiledBinding FirstNumber}" />
+
+                <TextBox Grid.Row="4" Text="{CompiledBinding SecondNumber}" />
+
+                <Button Grid.Row="6"
+                        Command="{CompiledBinding CalculateCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <avalonia:MaterialIcon Kind="Calculator" />
+                        <TextBlock Margin="8 0 0 0">Calculate</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <TextBlock Grid.Row="8"
+                           Text="{CompiledBinding Result}" />
+
+                <ProgressBar Grid.Row="8"
+                             IsIndeterminate="True"
+                             IsVisible="{CompiledBinding IsCalculating}" />
+
+            </Grid>
+        </Grid>
+
+    </Panel>
+</Window>
